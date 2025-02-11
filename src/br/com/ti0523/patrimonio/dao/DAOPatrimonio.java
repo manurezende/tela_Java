@@ -28,10 +28,10 @@ public class DAOPatrimonio
 			
 			//passagem da url de conexão com o banco de dados
 			//nome,usuario,senha,e porta
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306", "root", "");
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/dbpatrimonio?useSSL=false", "root", "");
 			
 			//criar uma variavel para inserir os dados no banco
-			String consulta = "insert into tbl_patrimonio(serie,nomepatrimonio,tipo,descricao,localizacao,datafabricacao,dataaquisicao);values(?,?,?,?,?,?,?)";
+			String consulta = "insert into tbl_patrimonio(serie,nomepatrimonio,tipo,descricao,localizacao,datafabricacao,dataaquisicao)values(?,?,?,?,?,?,?)";
 			
 			//preparar a consulta para ser executada(colocar em memoria)
 			pst = con.prepareStatement(consulta);
@@ -67,9 +67,12 @@ public class DAOPatrimonio
 		
 		finally
 		{
-			try {
+			try 
+			{
 				con.close();
-			} catch (SQLException e) {
+			} catch (SQLException e) 
+			
+			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
